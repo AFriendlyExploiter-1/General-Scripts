@@ -62,16 +62,16 @@ while task.wait() do
                     text2.Size = UDim2.fromScale(1, 1)
                 end
             else
-                local partName_ = ""
-                local mainPart_ = nil
+                local partName2 = ""
+                local mainPart2 = nil
                 for _, item in pairs(folder:GetChildren()) do
                     if item:IsA("BasePart") then
-                        partName_ = item.Name
-                        mainPart_ = item
+                        partName2 = item.Name
+                        mainPart2 = item
                         break
                     end
                 end
-                bodyPart["ESP Gui"].TextLabel.Text = partName .. "<br />[" .. tostring(math.round(player:DistanceFromCharacter(mainPart_.Position))) .. " studs]"
+                bodyPart["ESP Gui"].TextLabel.Text = partName2 .. "<br />[" .. tostring(math.round(player:DistanceFromCharacter(mainPart2.Position))) .. " studs]"
             end
         end
     for _, thing in pairs(game:GetService("Workspace"):WaitForChild("PlayerVisible"):WaitForChild(player.Name):GetChildren()) do
