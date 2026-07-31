@@ -35,8 +35,8 @@ while task.wait() do
         end
     end
     for _, part2 in pairs(game:GetService("Workspace"):WaitForChild("PlayerVisible"):GetChildren()) do
-        if part2.Name ~= player.Name
-        for _, model in pairs(part2:GetChildren()) do
+        if part2.Name ~= player.Name then
+            for _, model in pairs(part2:GetChildren()) do
                 if model:FindFirstChild("ESP Highlight") == nil and part2:FindFirstChild("ESP Gui") == nil then
                     if string.find(model.Name, player.Name) then
                         local newHighlight2 = Instance.new("Highlight", model)
@@ -69,6 +69,7 @@ while task.wait() do
                     end
                     part2["ESP Gui"].TextLabel.Text = partName2
                 end
+            end
         end
     end
     for _, thing in pairs(game:GetService("Workspace"):WaitForChild("PlayerVisible"):WaitForChild(player.Name):GetChildren()) do
