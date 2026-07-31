@@ -44,7 +44,7 @@ while task.wait() do
                 if string.find(lol.Name, player.Name) then
                     local newHighlight = Instance.new("Highlight", lol)
                     newHighlight.Name = "ESP Highlight"
-                    newHighlight.Adornee = part
+                    newHighlight.Adornee = lol
                     newHighlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
                     newHighlight.FillColor = Color3.new(0, 1, 1)
                     newHighlight.OutlineColor = Color3.new(0, 1, 1)
@@ -65,7 +65,7 @@ while task.wait() do
             else
                 local partName = ""
                 local mainPart = nil
-                for _, item in pairs(part:GetChildren()) do
+                for _, item in pairs(lol:GetChildren()) do
                     if item:IsA("BasePart") then
                         partName = item.Name
                         mainPart = item
