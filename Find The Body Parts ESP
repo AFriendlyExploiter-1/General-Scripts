@@ -36,6 +36,44 @@ while task.wait() do
             part["ESP Gui"].TextLabel.Text = partName .. "<br />[" .. tostring(math.round(player:DistanceFromCharacter(mainPart.Position))) .. " studs]"
         end
     end
+    for _, folder in pairs(game:GetService("Workspace"):WaitForChild("PlayerVisible"):GetChildren()) do
+        if folder.Name ~= player.Name
+            for _, bodyPart in pairs(folder:GetChildren()) do
+                if bodyPart:FindFirstChild("ESP Highlight") == nil and bodyPart:FindFirstChild("ESP Gui") == nil then
+                if string.find(bodyPart.Name, player.Name) then
+                    local newHighlight2 = Instance.new("Highlight", bodyPart)
+                    newHighlight2.Name = "ESP Highlight"
+                    newHighlight2.Adornee = bodyPart
+                    newHighlight2.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                    newHighlight2.FillColor = Color3.new(0, 1, 1)
+                    newHighlight2.OutlineColor = Color3.new(0, 1, 1)
+                    local gui2 = Instance.new("BillboardGui", bodyPart)
+                    gui2.Name = "ESP Gui"
+                    gui2.Adornee = part
+                    gui2.AlwaysOnTop = true
+                    gui2.ResetOnSpawn = false
+                    gui2.Size = UDim2.fromOffset(70, 35)
+                    local text2 = Instance.new("TextLabel", gui)
+                    text2.Name = "TextLabel"
+                    text2.BackgroundTransparency = 1
+                    text2.RichText = true
+                    text2.TextColor3 = Color3.new(0, 1, 1)
+                    text2.TextScaled = true
+                    text2.Size = UDim2.fromScale(1, 1)
+                end
+            else
+                local partName_ = ""
+                local mainPart_ = nil
+                for _, item in pairs(folder:GetChildren()) do
+                    if item:IsA("BasePart") then
+                        partName_ = item.Name
+                        mainPart_ = item
+                        break
+                    end
+                end
+                bodyPart["ESP Gui"].TextLabel.Text = partName .. "<br />[" .. tostring(math.round(player:DistanceFromCharacter(mainPart_.Position))) .. " studs]"
+            end
+        end
     for _, thing in pairs(game:GetService("Workspace"):WaitForChild("PlayerVisible"):WaitForChild(player.Name):GetChildren()) do
         if thing:FindFirstChild("ESP Highlight") then
             thing["ESP Highlight"]:Destroy()
