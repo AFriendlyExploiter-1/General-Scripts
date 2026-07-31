@@ -25,13 +25,17 @@ while task.wait() do
             end
         else
             local partName = ""
+            local mainPart = nil
             for _, item in pairs(part:GetChildren()) do
                 if item:IsA("BasePart") then
                     partName = item.Name
+                    mainPart = item
                     break
                 end
             end
-            part["ESP Gui"].TextLabel.Text = partName
+            if mainPart and player.Character and partName ~= "" then
+                part["ESP Gui"].TextLabel.Text = partName .. "<br />[" .. player:DistanceFromCharacter(mainPart.Position) .. " studs]"
+            end
         end
     end
     for _, part2 in pairs(game:GetService("Workspace"):WaitForChild("PlayerVisible"):GetChildren()) do
@@ -61,13 +65,17 @@ while task.wait() do
                     end
                 else
                     local partName2 = ""
+                    local mainPart2 = nil
                     for _, item2 in pairs(model:GetChildren()) do
                         if item2:IsA("BasePart") then
-                            partName2 = item.Name
+                            partName2 = item2.Name
+                            mainPart2 = item2
                             break
                         end
                     end
-                    part2["ESP Gui"].TextLabel.Text = partName2
+                    if item2 and player.Character and partName2 ~= "" then
+                        model["ESP Gui"].TextLabel.Text = partName2 .. "<br />[" .. player:DistanceFromCharacter(mainPart2.Position) .. " studs]"
+                    end
                 end
             end
         end
