@@ -34,7 +34,7 @@ while task.wait() do
                 end
             end
             if mainPart and player.Character and partName ~= "" then
-                part["ESP Gui"].TextLabel.Text = partName .. "<br />[" .. tostring(math.round(player:DistanceFromCharacter(mainPart.Position))) .. " studs]"
+                part["ESP Gui"].TextLabel.Text = partName .. "<br />[" .. string.format("%.0f", player:DistanceFromCharacter(mainPart.Position)) .. " studs]"
             end
         end
     end
@@ -74,7 +74,7 @@ while task.wait() do
                         end
                     end
                     if item2 and player.Character and partName2 ~= "" then
-                        model["ESP Gui"].TextLabel.Text = partName2 .. "<br />[" .. tostring(math.round(player:DistanceFromCharacter(mainPart2.Position))) .. " studs]"
+                        model["ESP Gui"].TextLabel.Text = partName2 .. "<br />[" .. string.format("%.0f", player:DistanceFromCharacter(mainPart2.Position)) .. " studs]"
                     end
                 end
             end
