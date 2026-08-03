@@ -63,6 +63,7 @@ end
 
 local coreGui = game:GetService("CoreGui")
 
+-- Removes any existing ESP folders (if you are re-executing the script)
 for _, asset in pairs(getChildren(coreGui, "ESP Folder", "Folder")) do
 	asset:Destroy()
 end
@@ -70,18 +71,18 @@ end
 local directory = create("Folder", coreGui, "ESP Folder")
 
 local function espObject(object, color, showHighlight, showText, textToDisplay)
-    
-    -- This removes any ESP folder that is already linked to the object to avoid unneccessary stacking 
-	for _, target in pairs(getChildren(directory, object.Name, "Folder")) do
-		if target:FindFirstChild("ESP Highlight") then
-			if target["ESP Highlight"].Adornee == object then
-				target:Destroy()
+	if object then
+
+		-- This removes any existing folders linked to the object Instance, preventing any unneccessary stacking
+		for _, target in pairs(getChildren(directory, object.Name, "Folder")) do
+			if target:FindFirstChild("ESP Highlight") then
+				if target["ESP Highlight"].Adornee == object then
+					target:Destroy()
+				end
 			end
 		end
-	end
 
-    -- The actual ESP creation part
-	if object then
+		-- The actual ESP creation
 		local folder = create("Folder", directory, object.Name)
 		local highlight = create("Highlight", folder, "ESP Highlight")
 		highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
