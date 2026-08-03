@@ -23,6 +23,11 @@ if game.PlaceId == 9731376817 then
                     text.TextColor3 = Color3.new(0, 1, 1)
                     text.TextScaled = true
                     text.Size = UDim2.fromScale(1, 1)
+                    local textStroke = Instance.new("UIStroke", text)
+                    textStroke.Color = Color3.new(0, 0, 0)
+                    textStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
+                    textStroke.Thickness = 0.05
+                    textStroke.StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize
                 end
             else
                 local partName = ""
