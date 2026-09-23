@@ -383,12 +383,9 @@ while task.wait(0.25) do
 	for _, item in game:GetDescendants() do
 		if item:IsA("Sound") then
 			if item:FindFirstChild("OriginalVolume") == nil then
-				local newIntValue = create("IntValue", item, "OriginalVolume")
+				local newIntValue = create("NumberValue", item, "OriginalVolume")
 				newIntValue.Value = item.Volume
 			else
-				if item.OriginalVolume.Value == 0 then
-					item.OriginalVolume.Value = 1
-				end
 				if values.customActive then
 					item.Volume = item.OriginalVolume.Value * values.customMultiplier
 				else
