@@ -378,6 +378,7 @@ _G.VolumeMultiplier_IsLoading = false
 _G.VolumeMultiplier_IsLoaded = true
 
 notify("Loaded! Press Alt + V to toggle the menu (or the UI button on mobile)", "Okay", 60)
+notify("Just don't blame me if you go deaf. That's on you for even using this script.")
 
 while task.wait(0.25) do
 	for _, item in game:GetDescendants() do
@@ -386,9 +387,9 @@ while task.wait(0.25) do
 				local newIntValue = create("NumberValue", item, "OriginalVolume")
 				newIntValue.Value = item.Volume
 			else
-				if values.customActive then
+				if values.customActive == true and item.Volume ~= item.OriginalVolume.Value * values.customMultiplier then
 					item.Volume = item.OriginalVolume.Value * values.customMultiplier
-				else
+				elseif values.customActive == false and item.Volume ~= item.OriginalVolume.Value * values.presetMultiplier then
 					item.Volume = item.OriginalVolume.Value * values.presetMultiplier
 				end
 			end
