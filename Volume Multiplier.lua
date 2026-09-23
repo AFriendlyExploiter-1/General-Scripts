@@ -395,12 +395,6 @@ while task.wait(0.25) do
 					item.Volume = item.OriginalVolume.Value * values.presetMultiplier
 				end
 			end
-		elseif item:IsA("IntValue") then
-			if item.Name == "OriginalVolume" then
-				if item.Value == 0 then
-					item.Value = 0.05
-				end
-			end
 		end
 	end
 end
